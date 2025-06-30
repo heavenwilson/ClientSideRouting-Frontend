@@ -6,6 +6,8 @@ import TaskList from "./components/TaskList";
 import AddTask from "./components/AddTask";
 import NavBar from "./components/NavBar";
 import { BrowserRouter as Router, Routes } from "react-router";
+import { Route } from "react-router-dom";
+import TaskDetails from "./components/TaskDetails.jsx";
 
 const App = () => {
   const [tasks, setTasks] = useState([]);
@@ -26,12 +28,27 @@ const App = () => {
   return (
     <div>
       <NavBar />
-      <TaskList tasks={tasks} fetchAllTasks={fetchAllTasks} />
-      <AddTask fetchAllTasks={fetchAllTasks} />
       <Routes>
-        {/* Currently, we don't have any routes defined. And you can see above that we're
-            rendering the TaskList and AddTask components directly, no matter what our URL looks like.
-            Let's fix that! */}
+        <Route
+        path="/"
+        element={<TaskList tasks={tasks} fetchAllTasks={fetchAllTasks} />}
+      />
+      <Route
+        path="/add-task"
+        element={<AddTask fetchAllTasks={fetchAllTasks} />}
+      />
+      <Route
+        path="/tasks/:id"
+        element={<TaskDetails />}
+      />
+      <Route
+        path="/completed"
+        element={<TaskList tasks={tasks.filter((task)=> task.completed)} fetchAllTasks={fetchAllTasks} />}
+      />
+      <Route
+        path="/incomplete"
+        element= {<TaskList tasks={tasks.filter((task)=> !task.completed)} fetchAllTasks={fetchAllTasks} />}
+      />
       </Routes>
     </div>
   );
