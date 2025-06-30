@@ -8,6 +8,7 @@ module.exports = {
     filename: "main.js",
     publicPath: "/",
   },
+  devtool: "source-map",
   module: {
     rules: [
       {
