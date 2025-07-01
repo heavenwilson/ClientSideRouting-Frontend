@@ -8,6 +8,8 @@ import NavBar from "./components/NavBar";
 import { BrowserRouter as Router, Routes } from "react-router";
 import { Route } from "react-router-dom";
 import TaskDetails from "./components/TaskDetails.jsx";
+import UsersList from "./components/UsersList";
+import UserTasks from "./components/UserTasks";
 
 const App = () => {
   const [tasks, setTasks] = useState([]);
@@ -49,6 +51,8 @@ const App = () => {
         path="/incomplete"
         element= {<TaskList tasks={tasks.filter((task)=> !task.completed)} fetchAllTasks={fetchAllTasks} />}
       />
+      <Route path="/users" element={<UsersList />} />
+      <Route path="/users/:id" element={<UserTasks />} />
       </Routes>
     </div>
   );
