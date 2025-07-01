@@ -13,7 +13,7 @@ const NavBar = () => {
       <NavLink to="/completed">Completed Tasks</NavLink>
       <NavLink to="/incomplete">Incomplete Tasks</NavLink>
       <NavLink to="/add-task">Add Task</NavLink>
-
+      <NavLink to="/users">Users</NavLink>
     </nav>
   );
 };
